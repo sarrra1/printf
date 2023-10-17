@@ -17,7 +17,7 @@ while (*format != '\0')
 {
 if (*format != '%')
 {
-putchar (*format);
+_putchar (*format);
 char_prints++;
 }
 else
@@ -32,19 +32,19 @@ while (str[str_len] != '\0')
 str_len++;
 for (i = 0 ; i < str_len ; i++)
 {
-putchar(str[i]);
+_putchar(str[i]);
 char_prints++;
 }
 break;
 }
 case 'c': {
 char c = va_arg(list_of_args_to_print, int);
-putchar(c);
+_putchar(c);
 char_prints++;
 break;
 }
 case '%':{
-putchar('%');
+_putchar('%');
 char_prints++;
 break;
 }
