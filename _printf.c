@@ -26,14 +26,13 @@ switch (*++format)
 {
 case 's': {
 char *str = va_arg(list_of_args_to_print, char*);
-int str_len = 0;
 int i;
-while (str[str_len] != '\0')
-str_len++;
-for (i = 0 ; i < str_len ; i++)
+while (str[i] != '\0')
 {
+
 _putchar(str[i]);
 char_prints++;
+i++;
 }
 break;
 }
