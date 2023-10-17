@@ -1,5 +1,4 @@
 0x11. C - printf
-group project 
-by 
-Sara  Faisal
+group project:
+Sara Faisal
 Dania Nasraldein
