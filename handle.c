@@ -21,11 +21,22 @@ write(1, "-", 1);
 sara_print++;
 }
 
+if (sara_int == 0)
+{
+dania_buff[iii] = '0';
+iii++;
+sara_print++;
+}
+
 if (sara_int > 0)
+{
+while (sara_int != 0)
 {
 dania_buff[iii] = '0' + (sara_int % 10);
 sara_int /= 10;
+iii++;
 sara_print++;
+}
 }
 
 for (lolo = iii - 1; lolo >= 0; lolo--)
