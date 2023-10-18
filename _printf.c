@@ -6,7 +6,7 @@
  * Return: the number of characters printed
  */
 int _printf(const char *format, ...)
-{
+{int handle_to_print_integer(int sara_int);
 va_list list_of_args_to_print;
 int char_prints = 0;
 if (format == NULL)
