@@ -1,5 +1,5 @@
 #include "main.h"
-#include "handle.c"
+
 /**
  * _printf - function that print  output though a format.
  *@format: The argument of the function printf
