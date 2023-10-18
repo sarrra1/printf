@@ -49,8 +49,8 @@ break;
 }
 case 'i':
 case 'd':{
-int sara_int = va_arg(list_of_args_to_print, int);
-int sara_print = handle_to_print_integer(sara_int);
+int *sara_int = va_arg(list_of_args_to_print, int);
+int sara_print = handle_to_print_integer(&sara_int);
 char_prints += sara_print;
 break;
 }
