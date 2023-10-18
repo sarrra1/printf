@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <limits.h>
 
-int handle_to_print_integer(int sara_int);
 int _putchar(char x);
+int handle_to_print_integer(int sara_int);
 int _printf(const char *format, ...);
 
 
