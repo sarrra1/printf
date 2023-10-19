@@ -7,92 +7,61 @@
  */
 int _printf(const char *format, ...)
 {
-va_list args;
-int print_count = 0;
-va_start(args, format);
+va_list list_of_args_to_print;
+int char_prints = 0;
+if (format == NULL)
+return (-1);
+va_start(list_of_args_to_print, format);
 
 while (*format != '\0')
 {
-if (*format == '%')
+if (*format != '%')
 {
-format++;
-switch (*format)
-{
-case 'd':
-{
-int arg = va_arg(args, int);
-int result = handle_to_print_integer(arg);
-
-if (result == -1)
-{                    
-va_end(args);
-return -1;
+putchar (*format);
+char_prints++;
 }
-print_count += result;
+else
+{
+switch (*++format)
+{
+case 's': {
+char *str = va_arg(list_of_args_to_print, char*);
+int str_len = 0;
+int i;
+while (str[str_len] != '\0')
+str_len++;
+for (i = 0 ; i < str_len ; i++)
+{
+putchar(str[i]);
+char_prints++;
+}
+break;
+}
+case 'c': {
+char c = va_arg(list_of_args_to_print, int);
+putchar(c);
+char_prints++;
+break;
+}
+case '%':{
+putchar('%');
+char_prints++;
 break;
 }
 case 'i':
-{
-int arg = va_arg(args, int);
-int result = handle_to_print_integer(arg);
-
-if (result == -1)
-{
-va_end(args);
-return -1;
-}
-print_count += result;
-break;
-}
-case 'c':
-{
-char arg = va_arg(args, int);
-write(1, &arg, 1);
-print_count++;
-break;
-}
-case 's':
-{
-char *arg = va_arg(args, char *);
-if (arg == NULL)
-{
-write(1, "(null)", 6);
-print_count += 6;
-}
-else
-{
-int i = 0;
-while (arg[i] != '\0')
-{
-write(1, &arg[i], 1);
-i++;
-print_count++;
-}
-}
-break;
-}
-case '%':
-{
-write(1, "%", 1);
-print_count++;
+case 'd':{
+int sara_int = va_arg(list_of_args_to_print, int);
+int sara_print = handle_to_print_integer(sara_int);
+char_prints += sara_print;
 break;
 }
 default:
-{
-write(1, format, 1);
-print_count += 2;
 break;
 }
 }
-}
-else
-{
-write(1, format, 1);
-print_count++;
-}
 format++;
 }
+va_end(list_of_args_to_print);
 
-va_end(args);
-return (print_count);
+return (char_prints);
 }
