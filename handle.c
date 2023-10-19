@@ -10,7 +10,7 @@
 int handle_to_print_integer(int sara_int)
 {
 int sara_print = 0;
-char *dania_buff = NULL;
+char dania_buff[56];
 int iii = 0;
 int lolo;
 
@@ -23,11 +23,6 @@ sara_print++;
 
 if (sara_int == 0)
 {
-dania_buff = (char *)malloc(str_size("0") + 1);
-
-if (dania_buff == NULL)
-return (-1);
-
 dania_buff[iii] = '0';
 iii++;
 sara_print++;
@@ -35,11 +30,6 @@ sara_print++;
 
 while (sara_int != 0)
 {
-dania_buff = (char *)malloc(str_size("0") + 1);
-
-if (dania_buff == NULL)
-return (-1);
-
 dania_buff[iii] = '0' + (sara_int % 10);
 sara_int /= 10;
 iii++;
@@ -51,6 +41,5 @@ for (lolo = iii - 1; lolo >= 0; lolo--)
 write(1, &dania_buff[lolo], 1);
 sara_print++;
 }
-free(dania_buff);
 return (sara_print);
 }
