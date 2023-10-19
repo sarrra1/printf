@@ -7,60 +7,54 @@
  */
 int _printf(const char *format, ...)
 {
-va_list list_of_args_to_print;
-int char_prints = 0;
-if (format == NULL)
-return (-1);
-va_start(list_of_args_to_print, format);
-
-while (*format != '\0')
-{
-if (*format != '%')
-{
-_putchar (*format);
-char_prints++;
-}
-else
-{
-switch (*++format)
-{
-case 's': {
-char *str = va_arg(list_of_args_to_print, char*);
-int i;
-while (str[i] != '\0')
-{
-
-_putchar(str[i]);
-char_prints++;
-i++;
-}
+va_list args;
+va_start(args, format);
+int print_count = 0;
+while (*format != '\0') {
+if (*format == '%') {
+format++;
+switch (*format) {
+case 'd':
+case 'i': {
+int arg = va_arg(args, int);
+print_count += handle_to_print_integer(arg);
 break;
 }
 case 'c': {
-char c = va_arg(list_of_args_to_print, int);
-_putchar(c);
-char_prints++;
-break;
+                    char arg = va_arg(args, int);
+                    write(1, &arg, 1);
+                    print_count++;
+                    break;
+                }
+                case 's': {
+                    char *arg = va_arg(args, char *);
+                    int i = 0;
+                    while (arg[i] != '\0') {
+                        write(1, &arg[i], 1);
+                        i++;
+                        print_count++;
+                    }
+                    break;
+                }
+                case '%': {
+                    write(1, "%", 1);
+                    print_count++;
+                    break;
+                }
+                default: {
+                    write(1, "%", 1);
+                    write(1, format, 1);
+                    print_count += 2;
+                    break;
+                }
+            }
+        } else {
+            write(1, format, 1);
+            print_count++;
+        }
+        format++;
 }
-case '%':{
-_putchar('%');
-char_prints++;
-break;
-}
-case 'i':
-case 'd':{
-int sara_int = va_arg(list_of_args_to_print, int);
-int sara_print = handle_to_print_integer(sara_int);
-char_prints += sara_print;
-break;
-}
-default:
-break;
-}
-}
-format++;
-}
-va_end(list_of_args_to_print);
 
-return (char_prints);
+va_end(args);
+return (print_count);
 }
