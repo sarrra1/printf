@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
+int str_size(char *size);
 int handle_to_print_integer(int sara_int);
 int _printf(const char *format, ...);
 
