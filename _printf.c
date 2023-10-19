@@ -65,7 +65,6 @@ break;
 }
 default:
 {
-write(1, "%", 1);
 write(1, format, 1);
 print_count += 2;
 break;
