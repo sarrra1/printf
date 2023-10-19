@@ -20,24 +20,24 @@ switch (*format)
 case 'd':
 case 'i':
 {
-int sardan = va_arg(args, int);
-print_count += handle_to_print_integer(sardan);
+int arg = va_arg(args, int);
+print_count += handle_to_print_integer(arg);
 break;
 }
 case 'c':
 {
-char dan = va_arg(args, int);
-write(1, &dan, 1);
+char arg = va_arg(args, int);
+write(1, &arg, 1);
 print_count++;
 break;
 }
 case 's':
 {
-char *dansar = va_arg(args, char *);
+char *arg = va_arg(args, char *);
 int i = 0;
-while (dansar[i] != '\0')
+while (arg[i] != '\0')
 {
-write(1, &dansar[i], 1);
+write(1, &arg[i], 1);
 i++;
 print_count++;
 }
