@@ -21,13 +21,27 @@ switch (*format)
 case 'd':
 {
 int arg = va_arg(args, int);
-print_count += handle_to_print_integer(arg);
+int result = handle_to_print_integer(arg);
+
+if (result == -1)
+{                    
+va_end(args);
+return -1;
+}
+print_count += result;
 break;
 }
 case 'i':
 {
 int arg = va_arg(args, int);
-print_count += handle_to_print_integer(arg);
+int result = handle_to_print_integer(arg);
+
+if (result == -1)
+{
+va_end(args);
+return -1;
+}
+print_count += result;
 break;
 }
 case 'c':
