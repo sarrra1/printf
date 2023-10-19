@@ -10,7 +10,7 @@
 int handle_to_print_integer(int sara_int)
 {
 int sara_print = 0;
-char dania_buff[56];
+char dania_buff = NULL;
 int iii = 0;
 int lolo;
 
