@@ -23,7 +23,7 @@ sara_print++;
 
 if (sara_int == 0)
 {
-dania_buff = (char *)malloc(str_size(char));
+dania_buff = (char *)malloc(str_size(sara_int));
 
 if (dania_buff == NULL)
 return (-1);
@@ -35,7 +35,7 @@ sara_print++;
 
 while (sara_int != 0)
 {
-dania_buff = (char *)malloc(str_size(char));
+dania_buff = (char *)malloc(str_size(sara_int));
 
 if (dania_buff == NULL)
 return (-1);
