@@ -18,12 +18,12 @@ if (*format == '%')
 format++;
 switch (*format)
 {
-case 'd':
+case 'd' :
 {
 int arg = va_arg(args, int);
 print_count += handle_to_print_integer(arg);
-break;
-}
+break;	
+}	
 case 'i':
 {
 int arg = va_arg(args, int);
@@ -40,8 +40,15 @@ break;
 case 's':
 {
 char *arg = va_arg(args, char *);
+if (arg == NULL) 
+{
+write(1, "(null)", 6);
+print_count += 6;
+}
+else 
+{
 int i = 0;
-while (arg[i] != '\0')
+while (arg[i] != '\0') 
 {
 write(1, &arg[i], 1);
 i++;
