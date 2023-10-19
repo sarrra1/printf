@@ -19,6 +19,11 @@ format++;
 switch (*format)
 {
 case 'd':
+{
+int arg = va_arg(args, int);
+print_count += handle_to_print_integer(arg);
+break;
+}
 case 'i':
 {
 int arg = va_arg(args, int);
